@@ -9,14 +9,21 @@ const config = {
     filename: "bundle.js",
   },
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
+    rules: [{
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [{
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              paths: [path.resolve(__dirname, 'node_modules')],
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
@@ -24,14 +31,12 @@ const config = {
       },
       {
         test: /\.png$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              mimetype: "image/png",
-            },
+        use: [{
+          loader: "url-loader",
+          options: {
+            mimetype: "image/png",
           },
-        ],
+        }, ],
       },
     ],
   },

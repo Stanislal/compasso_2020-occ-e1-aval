@@ -4,6 +4,14 @@ body,
   height: 100%;
 }
 
+.gradient-background {
+  background: repeating-linear-gradient(-55deg,
+      #222,
+      #222 10px,
+      #333 10px,
+      #333 20px);
+}
+
 html {
   box-sizing: border-box;
 }
@@ -65,6 +73,7 @@ body,
 
 .bookshelf-books {
   text-align: center;
+  min-height: 400px;
 }
 
 button:active {
@@ -79,6 +88,7 @@ button:active {
 /* books grid */
 
 .books-grid {
+  height: 100%;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -90,6 +100,8 @@ button:active {
 .books-grid li {
   padding: 10px 15px;
   text-align: left;
+  height: min-content;
+
 }
 
 .book {
