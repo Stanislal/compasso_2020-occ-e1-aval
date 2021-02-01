@@ -1,30 +1,23 @@
 <script  type="module" src='./src/index.js'></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 <body>
   <div class="app">
-    <div id="search-div" class="search-books" style="display: none">
-      <div class="search-books-bar">
-        <button class="close-search" onClick={closeSearch}>Close</button>
-        <div class="search-books-input-wrapper">
-          <input type="text" placeholder="Search by title or author" />
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <div class="container container-fluid">
+        <h2 class="h2">Minhas leituras</h2>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <a id="btn-search-books" class="btn btn-outline-success" type="submit">Search</a>
+        </form>
+      </div>
+    </nav>
+      <div class="container">
+        <div class="list-books-content container">
+          <div id="search-books" class="row"></div>
+          <div id="my-books" class="row"></div>
+        </div>
+      </div>
 
-        </div>
-      </div>
-      <div class="search-books-results">
-        <ol class="books-grid"></ol>
-      </div>
-    </div>
-    <div class="list-books">
-      <div class="list-books-title">
-        <h1>MyReads</h1>
-      </div>
-      <div class="list-books-content">
-        <div style="display: flex;">
-        
-        </div>
-      </div>
-      <div class="open-search">
-        <button id="search_button">Add a book</button>
-      </div>
-    </div>
   </div>
 </body>

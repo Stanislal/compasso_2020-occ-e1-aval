@@ -1,16 +1,22 @@
+import api from "../../api/api.js"
+
+function moveTo() {
+    console.log(this)
+}
+
 function createCardDOM() {
     var book = this;
     var card = document.createElement('div')
-    card.classList.add("book")
+    card.classList.add("book", "drag-me")
     card.innerHTML = `
         <div class="book-top">
-            <div class="book-cover"
+            <div class="book-cover img-thumbnail"
             style='width:128px;height:193px;background-image:url("${book.imageLinks.thumbnail}")'>
             </div>
             <div class="book-shelf-changer">
-            <select>
+            <select id="book-${this.id}" onchange="moveTo(event)">
                 <option value="move" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
+                <option value="currentlyReading" >Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
                 <option value="none">None</option>
@@ -23,6 +29,8 @@ function createCardDOM() {
     `
     return card;
 }
+
+
 
 function getCard() {
     return createCardDOM.bind(this).call();;

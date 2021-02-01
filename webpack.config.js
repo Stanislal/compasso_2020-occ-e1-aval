@@ -10,20 +10,12 @@ const config = {
   },
   module: {
     rules: [{
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
         test: /\.less$/,
-        use: [{
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              paths: [path.resolve(__dirname, 'node_modules')],
-            },
-          },
-        ],
+        use: ["style-loader", "css-loader", "less-loader"],
       },
       {
         test: /\.svg$/,

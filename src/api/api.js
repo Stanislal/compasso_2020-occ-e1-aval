@@ -13,7 +13,9 @@ const headers = {
 
 function getBook(bookId) {
   return new Promise((resolve, reject) => {
-    fetch(api + "/books/" + bookId.toString(), { headers })
+    fetch(api + "/books/" + bookId.toString(), {
+        headers
+      })
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
@@ -22,7 +24,9 @@ function getBook(bookId) {
 
 function getMyBooks() {
   return new Promise(function (resolve, reject) {
-    fetch(api + "/books", { headers })
+    fetch(api + "/books", {
+        headers
+      })
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
@@ -31,14 +35,22 @@ function getMyBooks() {
 
 function updateBook(book, shelf) {
   return new Promise((resolve, reject) => {
-    fetch(api + "/books/" + book.id.toString(), {
-      method: "PUT",
-      headers: {
-        ...headers,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ shelf }),
-    })
+    var url = api + "/books/";
+    if (typeof book == "string") {
+      url = url + book;
+    } else {
+      url = url + book.id.toString();
+    }
+    fetch(url, {
+        method: "PUT",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          shelf
+        }),
+      })
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
@@ -48,17 +60,23 @@ function updateBook(book, shelf) {
 function searchBooks(query) {
   return new Promise((resolve, reject) => {
     fetch(`${api}/search`, {
-      method: "POST",
-      headers: {
-        ...headers,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    })
+        method: "POST",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query
+        }),
+      })
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
   });
 }
 
-export default { getMyBooks };
+export default {
+  getMyBooks,
+  updateBook,
+  searchBooks
+};

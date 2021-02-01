@@ -4,6 +4,30 @@ body,
   height: 100%;
 }
 
+li:hover {
+  transition: all .5s;
+  transform: translateY(-15px);
+}
+
+li {
+  transition: all 1s;
+}
+
+.drag-me {
+  &:active {
+    cursor: url('https://www.google.com/intl/en_ALL/mapfiles/closedhand.cur'), all-scroll;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: -o-grabbing;
+    cursor: -ms-grabbing;
+    cursor: grabbing;
+  }
+
+  position:relative;
+
+}
+
+
 .gradient-background {
   background: repeating-linear-gradient(-55deg,
       #222,
@@ -39,41 +63,43 @@ body,
 
 /* main page */
 
-.list-books-title {
-  padding: 10px 0;
-  background: #2e7c31;
-  text-align: center;
-}
+.list {
+  &-books {
+    &-title {
+      padding: 10px 0;
+      background: #2e7c31;
+      text-align: center;
 
-.list-books-title h1 {
-  font-weight: 400;
-  margin: 0;
-  color: white;
-}
+      h1 {
+        font-weight: 400;
+        margin: 0;
+        color: white;
+      }
+    }
 
-.list-books-content {
-  padding: 0 0 80px;
-  flex: 1;
-}
-
-.bookshelf {
-  width: 33%;
-  padding: 0 10px 20px;
-}
-
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
+    &-content {
+      padding: 0 0 80px;
+      flex: 1;
+    }
   }
 }
 
-.bookshelf-title {
-  border-bottom: 1px solid #dedede;
-}
 
-.bookshelf-books {
-  text-align: center;
-  min-height: 400px;
+.bookshelf {
+  padding: 0 10px 20px;
+
+  @media (min-width: 600px) {
+    padding: 0 20px 40px;
+  }
+
+  &-title {
+    border-bottom: 1px solid #dedede;
+  }
+
+  &-books {
+    text-align: center;
+    min-height: 400px;
+  }
 }
 
 button:active {
@@ -85,81 +111,81 @@ button:active {
   padding: 80px 10px 20px;
 }
 
-/* books grid */
 
-.books-grid {
-  height: 100%;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.books {
+  &-grid {
+    /* height: 100%; */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+
+    li {
+      padding: 10px 15px;
+      text-align: left;
+      height: min-content;
+    }
+  }
 }
 
-.books-grid li {
-  padding: 10px 15px;
-  text-align: left;
-  height: min-content;
-
-}
 
 .book {
-  width: 140px;
+  max-width: 140px;
   cursor: grab;
-}
 
-.book-title,
-.book-authors {
-  font-size: 0.8em;
-}
+  &-title {
+    margin-top: 10px;
+    font-size: 0.8em;
+  }
 
-.book-title {
-  margin-top: 10px;
-}
+  &-authors {
+    font-size: 0.8em;
+    color: #999;
+  }
 
-.book-authors {
-  color: #999;
-}
+  &-top {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+  }
 
-.book-top {
-  position: relative;
-  height: 200px;
-  display: flex;
-  align-items: flex-end;
-}
+  &-shelf {
+    &-changer {
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #60ac5d;
+      // background-image: url('./icons/arrow-drop-down.svg');
+      display: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
-.book-shelf-changer {
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #60ac5d;
-  // background-image: url('./icons/arrow-drop-down.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+      select {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+  }
 
-.book-shelf-changer select {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
+  &-cover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: #eee;
+    height: 200px;
 
-/* book cover */
-
-.book-cover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: #eee;
-}
-
-.book-cover-title {
-  padding: 20px 10px 0;
-  text-align: center;
-  font-size: 0.8em;
+    &-title {
+      padding: 20px 10px 0;
+      text-align: center;
+      font-size: 0.8em;
+    }
+  }
 }
